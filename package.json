@@ -1,7 +1,7 @@
 {
   "name": "algolia-test",
   "version": "0.1.0",
-  "homepage": "http://dhsiung.github.io/gh-algolia-test",
+  "homepage": "http://dhsiung.github.io/algolia-test",
   "private": true,
   "dependencies": {
     "algoliasearch": "^3.30.0",
