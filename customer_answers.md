@@ -8,6 +8,7 @@ I'm also struggling with understanding what types of metrics would be useful to 
 
 Cheers, George
 
+
 Hi George,
 
 Absolutely!
@@ -39,6 +40,9 @@ Best,
 Danny
 
 
+
+
+
 Question 2: Hello,
 
 Sorry to give you the kind of feedback that I know you do not want to hear, but I really hate the new dashboard design. Clearing and deleting indexes are now several clicks away. I am needing to use these features while iterating, so this is inconvenient.
@@ -66,6 +70,8 @@ Question 3: Hi,
 I'm looking to integrate Algolia in my website. Will this be a lot of development work for me? What's the high level process look like?
 
 Regards, Leo
+
+
 
 Hi Leo,
 
