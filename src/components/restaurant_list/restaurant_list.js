@@ -15,9 +15,9 @@ export default class RestaurantList extends Component {
     const restaurants = this.renderRestaurants();
 
     return (
-      <Container id='restaurant-list'>
+      <div id='restaurant-list'>
         {restaurants}
-      </Container>
+      </div>
     );
   }
 

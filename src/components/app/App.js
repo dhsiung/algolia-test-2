@@ -191,9 +191,9 @@ class App extends Component {
               </div>
             </Col>
           </Row>
-
+          <Row>
           <Col>
-            <div id="result-container">
+            
              <Row>
               <Col sm='3' id='sidebar' className='border-right'>
                 <FoodTypeFilter updateFoodType={this.updateFoodType} foodTypeCounter={this.state.foodTypeCounter}/>
@@ -208,8 +208,9 @@ class App extends Component {
                   updatePageNum={this.updatePageNum} />
               </Col>
               </Row>
-            </div>
+
            </Col>
+           </Row>
           </div>
         </div>
 

@@ -48,6 +48,10 @@
   text-decoration: underline;
 }
 
+#result-container {
+  display: flex;
+}
+
 ul {
   list-style: none;
 }
@@ -59,4 +63,9 @@ ul > li:hover {
 
 ul > li.active {
   background-color: #4ca3e0;
+}
+
+#side-bar{
+
+  display:flex;
 }

@@ -1,8 +1,13 @@
 .rest-attributes {
-	text-align: left;
+	justify-content: flex-start;
+ 	flex-direction: row;
+ 		display:block;
 }
 
 .rest-secondary-attributes {
-	text-align: right;
 	display:block;
+	display: flex;
+ 	flex-direction: row;
+ 	justify-content: flex-end;
+ 	padding-right: 5vw;
 }

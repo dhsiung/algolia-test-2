@@ -21,6 +21,7 @@ export default class Pagination extends Component {
   nextPageHandler = (e) => {
     if (e.currentTarget.classList.contains('disabled')) { return }
     this.props.updatePageNum(this.props.currPage + 1);
+    window.scrollTo(0,0);
   }
 
   render() {
