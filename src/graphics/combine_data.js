@@ -9,18 +9,18 @@ const client = algoliasearch(APP_ID, API_KEY)
 const index = client.initIndex(indexName)
 
 
-  function combineJSONData(rest_A, rest_B) {
+function combineJSONData(rest_A, rest_B) {
 
-    const sortedRestaurant1 = rest_A.sort((a, b) => {
-      return parseInt(a.objectID) - parseInt(b.objectID)
-    })
-    const sortedRestaurant2 = rest_B.sort((rest1, rest2) => {
-      return parseInt(rest1.objectID) - parseInt(rest2.objectID)
-    })
-    return sortedRestaurant1.map((rest, idx) => {
-      return Object.assign(rest, sortedRestaurant2[idx])
-    })
-  }
+  const sortedRestaurant1 = rest_A.sort((a, b) => {
+    return parseInt(a.objectID) - parseInt(b.objectID)
+  })
+  const sortedRestaurant2 = rest_B.sort((rest1, rest2) => {
+    return parseInt(rest1.objectID) - parseInt(rest2.objectID)
+  })
+  return sortedRestaurant1.map((rest, idx) => {
+    return Object.assign(rest, sortedRestaurant2[idx])
+  })
+}
 
 
 
