@@ -10,7 +10,7 @@ export default class App extends Component {
   }
 
   changeHandler = (event, suggestion) => {
-    const query = [suggestion.food_type, suggestion.neighborhood];
+    const query = [suggestion.food_type, suggestion.neighborhood, suggestion.area, suggestion.city];
     this.props.assignTopResult([suggestion]);
     this.props.updateAutocompleteSearch(query);
   }
