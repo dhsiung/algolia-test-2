@@ -77,11 +77,9 @@ class App extends Component {
     this.addFoodTypeFilters(helper);
 
     helper.setQuery(query).setPage(this.state.currPage).search().on('result', content => {
-      console.log(content);
-
       this.setState({
         foodTypeCounter: content.getFacetValues('food_type', {sortBy: ['count:desc']}),
-        results: content.hits, 
+        results: content.hits,
         totalPages: content.nbPages,
         queryTime: content.processingTimeMS,
         totalHits: content.nbHits,
@@ -94,7 +92,6 @@ class App extends Component {
   addGeolocationFilters = (helper) => {
     if (this.state.lat && this.state.lng) {
       const coordinates = `${this.state.lat}, ${this.state.lng}`;
-      const default_rad = '75';
       helper.setQueryParameter('aroundLatLng', coordinates);
     } else {
       helper.setQueryParameter('aroundLatLngViaIP', true);
@@ -174,26 +171,15 @@ class App extends Component {
         <div className="main-container">
           <Row>
             <Col sm='12'>
-              <SearchBar  
+              <SearchBar
                 algoliaVars={App.ENV_VARS.algolia}
                 assignTopResult={this.assignTopResult}
                 updateAutocompleteSearch={this.updateAutocompleteSearch}
               />
             </Col>
           </Row>
-
-          <Row className='mb-4'>
-            <Col md='3'> </Col>
-            <Col col='9'>
-              <div className='pr-2 text-left small'>
-                <span> Found {this.state.totalHits} results in {this.state.queryTime / 1000.0} seconds </span>
-                <img className="float-right" src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg" alt='algolia-brand'></img>
-              </div>
-            </Col>
-          </Row>
           <Row>
           <Col>
-            
              <Row>
               <Col sm='3' id='sidebar' className='border-right'>
                 <FoodTypeFilter updateFoodType={this.updateFoodType} foodTypeCounter={this.state.foodTypeCounter}/>
@@ -201,6 +187,17 @@ class App extends Component {
                 <PaymentFilter updatePayment={this.updatePayment} />
               </Col>
               <Col sm='9'>
+
+                <Row className='pr-2 text-left m-2 pt-3 border-bottom'>
+                  <Col md={5} className='pl-0'>
+                    <span>
+                      {this.state.totalHits} results found
+                    </span>
+                    <span> in {this.state.queryTime / 1000.0} seconds </span>
+                  </Col>
+                  <Col md={{size: 2, offset: 5}}> <img className="float-right" src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg" alt='algolia-brand'></img> </Col>
+                </Row>
+
                 <RestaurantList restaurants={this.orderedResults().slice(0, 10)}/>
                 <Pagination
                   currPage={this.state.currPage}

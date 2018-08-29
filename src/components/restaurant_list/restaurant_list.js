@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
 import Restaurant from './restaurant/restaurant';
 import './restaurant_list.css';
 

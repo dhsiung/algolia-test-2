@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 export default class PaymentFilter extends Component {
   static PAYMENT_OPTIONS = ['AMEX', 'Discover', 'MasterCard', 'Visa']
@@ -7,39 +7,37 @@ export default class PaymentFilter extends Component {
   constructor(props) {
    super(props);
 
-   this.state = {
-     activePayment: null,
-   }
+   this.state = { activePayment: null }
+   this.updatePayment = this.updatePayment.bind(this);
   }
 
-  updatePayment = (e) => {
-    e.preventDefault();
-
-    if (this.state.activePayment === e.target.value) {
+  updatePayment = (opt) => {
+    if (this.state.activePayment === opt) {
       // Resets the payment filter if already active
       this.setState({activePayment: null});
       this.props.updatePayment('');
     } else {
-      this.setState({activePayment: e.target.value});
-      this.props.updatePayment(e.target.value);
+      this.setState({activePayment: opt});
+      this.props.updatePayment(opt);
     }
   }
 
   active = (paymentType) => {
     if (this.state.activePayment === paymentType) {
       return 'active';
+    } else {
+      return '';
     }
   }
 
   renderPaymentOptions = () => {
     return PaymentFilter.PAYMENT_OPTIONS.map((opt, idx) => {
       return(
-        <Button outline color="info" key={idx} className={'d-block w-100 mb-1' + this.active(opt)}
-          value={opt}
-          onClick={this.updatePayment.bind(this)}
+        <Row key={idx} className={this.active(opt) + ' filter-option'}
+          onClick={() => {this.updatePayment(opt)}}
         >
-          {opt}
-        </Button>
+          <Col md={12}>{opt}</Col>
+        </Row>
       )
     })
   }
@@ -47,9 +45,9 @@ export default class PaymentFilter extends Component {
   render() {
     const paymentOptions = this.renderPaymentOptions();
     return (
-      <div>
-        <h4> Payment Options </h4>
-        {paymentOptions}
+      <div className='results-filter'>
+        <div className='filter-title'> Payment Options </div>
+        <div className='filter-options'>{paymentOptions}</div>
       </div>
     );
   }

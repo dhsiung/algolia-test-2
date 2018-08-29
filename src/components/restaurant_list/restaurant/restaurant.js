@@ -12,17 +12,14 @@ export default class Restaurant extends Component {
         <Row className='restaurant'>
           <Col xs="3">
             <img className='rounded' src={r.image_url} alt={`${r.name}-thumbnail`}/>
-
           </Col>
           <Col xs="9">
-              <Row>
+              <Row className='ml-2'>
                 <Col md='8'>
                   <div className='rest-attributes'>
-                    <Row>
-                      {r.name}
-                    </Row>
-                    <Row>
-                      <span className='pr-3'>{Number.parseFloat(r.stars_count).toFixed(1)} </span>
+                    <Row className='rest-title'>{r.name}</Row>
+                    <Row className='rest-stars'>
+                      <span className='rest-rating pr-3'>{Number.parseFloat(r.stars_count).toFixed(1)} </span>
                       <span className='pr-3'>
                         <Stars className='d-inline-block align-text-bottom'
                           edit={false}
@@ -31,7 +28,7 @@ export default class Restaurant extends Component {
                       </span>
                       <span className='pr-3'> ({r.reviews_count} reviews)</span>
                     </Row>
-                    <Row>
+                    <Row className='rest-details'>
                       {r.price_range} | {r.food_type} | {r.dining_style}
                     </Row>
                   </div>

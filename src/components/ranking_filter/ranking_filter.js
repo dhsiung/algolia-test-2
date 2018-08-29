@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stars from 'react-stars';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 export default class RankingFilter extends Component {
   static RANKS = [0, 1, 2, 3, 4, 5];
@@ -27,15 +27,22 @@ export default class RankingFilter extends Component {
   active = (rank) => {
     if (this.state.activeRank === rank) {
       return 'active';
+    } else {
+      return '';
     }
   }
 
   renderRankFilter = () => {
     return RankingFilter.RANKS.map((rank, idx) => {
       return(
-        <li className={this.active(rank)} onClick={() => {this.updateRank(rank)}} key={idx}>
-          <Stars edit={false} value={rank}/>
-        </li>
+        <Row className={this.active(rank) + ' filter-option'}
+          onClick={() => {this.updateRank(rank)}}
+          key={idx}
+        >
+          <Col md={12}>
+            <Stars edit={false} value={rank}/>
+          </Col>
+        </Row>
       )
     })
   }
@@ -43,9 +50,9 @@ export default class RankingFilter extends Component {
   render() {
     const rankFilter = this.renderRankFilter();
     return (
-      <div>
-        <h4> Rating </h4>
-        <ul>{rankFilter}</ul>
+      <div className='results-filter'>
+        <div className='filter-title'> Rating </div>
+        <div className='filter-options'>{rankFilter}</div>
       </div>
     );
   }

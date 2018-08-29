@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 export default class FoodTypeFilter extends Component {
 
@@ -25,6 +25,8 @@ export default class FoodTypeFilter extends Component {
   active = (name) => {
     if (this.state.activeFoodType === name) {
       return 'active';
+    } else {
+      return '';
     }
   }
 
@@ -32,9 +34,13 @@ export default class FoodTypeFilter extends Component {
     return this.props.foodTypeCounter.map((foodTypeObj, idx) => {
       const name = foodTypeObj.name;
       return (
-        <li className={this.active(name) + ' text-left'} onClick={() => {this.updateFoodType(name)}} key={idx}>
-          {name} ({foodTypeObj.count})
-        </li>
+        <Row className={this.active(name) + ' filter-option'}
+          onClick={() => {this.updateFoodType(name)}}
+          key={idx}
+        >
+          <Col md={10}>{name}</Col>
+          <Col md={2}>({foodTypeObj.count})</Col>
+        </Row>
       )
     });
   }
@@ -42,9 +48,9 @@ export default class FoodTypeFilter extends Component {
   render() {
     const foodTypeFilter = this.renderFoodTypeFilter();
     return (
-      <div>
-        <h4> Cuisine/Food Type </h4>
-        <ul> {foodTypeFilter} </ul>
+      <div className='results-filter'>
+        <div className='filter-title'> Cuisine/Food Type </div>
+        <div className='filter-options'> {foodTypeFilter} </div>
       </div>
     );
   }
