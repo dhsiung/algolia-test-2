@@ -114,6 +114,7 @@ class App extends Component {
     if (this.state.paymentFilter) {
       helper.addDisjunctiveFacetRefinement("payment_options", this.state.paymentFilter);
 
+      // treat carte blanche and diners club as discover cards
       if (this.state.paymentFilter === 'discover') {
         helper.addDisjunctiveFacetRefinement("payment_options", 'carte blanche');
         helper.addDisjunctiveFacetRefinement("payment_options", 'diners club');
@@ -162,6 +163,21 @@ class App extends Component {
       }
     })
   }
+
+  // function combineJSONData(rest_A, rest_B) {
+
+  //   const sortedRestaurant1 = rest_A.sort((a, b) => {
+  //     return parseInt(a.objectID) - parseInt(b.objectID)
+  //   })
+  //   const sortedRestaurant2 = rest_B.sort((rest1, rest2) => {
+  //     return parseInt(rest1.objectID) - parseInt(rest2.objectID)
+  //   })
+  //   return sortedRestaurant1.map((rest, idx) => {
+  //     return Object.assign(rest, sortedRestaurant2[idx])
+  //   })
+  // }
+
+
 
   render() {
 
